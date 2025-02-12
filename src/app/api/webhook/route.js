@@ -10,7 +10,7 @@ export async function POST(req) {
     if (body.callback_query && body.callback_query.data === 'play_game') {
       const chatId = body.callback_query.from.id;
       await sendGame(chatId, 'fnfscrazycar');  // 게임을 시작하는 명령
-      await answerCallbackQuery(body.callback_query.id);  // 콜백 쿼리 처리 완료
+      await answerCallbackQuery(body.callback_query.id, "https://fnfsgame.vercel.app");  // 콜백 쿼리 처리 완료
       return NextResponse.json({ ok: true });
     }
 
