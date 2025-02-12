@@ -5,13 +5,13 @@ const { Bot } = require("grammy");
 const bot = new Bot(process.env.TELEGRAM_BOT_TOKEN);
 
 // 봇 초기화
-await bot.init();  
+await bot.init();
 
 // /start 명령어 처리
 bot.command("start", async (ctx) => {
   const keyboard = {
     inline_keyboard: [
-      [{ text: "Play Game", callback_data: "play_game" }],  // callback_data로 설정
+      [{ text: "Play Game", callback_data: "play_game" }],
       [{ text: "Follow X", url: "https://x.com/Fnfs_Official" }],
       [{ text: "Join Official Telegram", url: "https://t.me/fnfs_official" }],
     ],
@@ -43,13 +43,14 @@ The race for N₂O is *ON*! Are you ready to shift into high gear and take the l
   });
 });
 
-// callback_query 처리 (Play Game 버튼 클릭 시 URL 반환)
+// callback_query 처리 (Play Game 버튼 클릭 시 Telegram 게임 인터페이스로 이동)
 bot.on("callback_query:data", async (ctx) => {
   if (ctx.callbackQuery.data === "play_game") {
-    await ctx.answerCallbackQuery();  // 버튼 클릭 시 로딩 표시 없애기
-    await ctx.reply("✅ Redirecting to the game... [Click here to start!](https://fnfsgame.vercel.app/)", {
-      parse_mode: "Markdown",
-    });
+    // 사용자가 Play Game 버튼을 클릭하면 게임을 Telegram 내에서 시작
+    await ctx.answerCallbackQuery();  // 로딩 표시 없애기
+    
+    // Telegram 게임 인터페이스로 게임을 보낼 수 있음
+    await ctx.telegram.sendGame(ctx.from.id, "fnfscrazycar");  // "fusednfurious"는 등록된 게임의 short name
   }
 });
 
