@@ -50,15 +50,15 @@ The race for N₂O is *ON*! Are you ready to shift into high gear and take the l
 
     const videoUrl = 'https://fnfsbot.vercel.app/fnfsgif.mp4';  // Vercel 배포된 mp4 비디오 URL
 
-   // 비디오 전송
-   await ctx.reply(message, {
-    reply_markup: keyboard,
-    parse_mode: "Markdown",
+  // 1. 비디오 먼저 전송 (캡션 없이)
+  await ctx.replyWithVideo(videoUrl, {
+    caption: "",  // 캡션을 빈 문자열로 설정
   });
 
-  // 비디오 파일 전송
-  await ctx.replyWithVideo(videoUrl, {
-    caption: "Check out the action in Fused n Furious! 🎮🔥",
+  // 2. 그 후 텍스트 메시지와 버튼 전송
+  await ctx.reply(message, {
+    reply_markup: keyboard,
+    parse_mode: "Markdown",
   });
 }
 });
