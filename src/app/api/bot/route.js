@@ -48,11 +48,19 @@ The race for N₂O is *ON*! Are you ready to shift into high gear and take the l
 🚗 *Let’s race & earn!* 🚗
 `;
 
-    await ctx.reply(message, {
-      reply_markup: keyboard,
-      parse_mode: "Markdown",
-    });
-  }
+    const videoUrl = 'https://fnfsbot.vercel.app/fnfsgif.mp4';  // Vercel 배포된 mp4 비디오 URL
+
+   // 비디오 전송
+   await ctx.reply(message, {
+    reply_markup: keyboard,
+    parse_mode: "Markdown",
+  });
+
+  // 비디오 파일 전송
+  await ctx.replyWithVideo(videoUrl, {
+    caption: "Check out the action in Fused n Furious! 🎮🔥",
+  });
+}
 });
 
 // ✅ Vercel에서 서버리스 API로 실행되도록 설정
