@@ -3,8 +3,10 @@ require('dotenv').config();
 const { Bot } = require("grammy");
 
 // Telegram 봇 토큰
-const token = process.env.TELEGRAM_BOT_TOKEN;
-const bot = new Bot(token); // grammy 봇 객체 생성
+const bot = new Bot(process.env.TELEGRAM_BOT_TOKEN);
+
+// 봇 초기화 (필수)
+await bot.init();  // 이 부분을 추가하세요
 
 // /start 명령어 처리
 bot.on('message:text', async (ctx) => {
