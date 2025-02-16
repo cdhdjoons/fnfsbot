@@ -13,7 +13,7 @@ bot.command("start", async (ctx) => {
     inline_keyboard: [
       [{ text: "Play Game", web_app: { url: "https://fnfsgame.vercel.app/" } }],  // 게임 링크 수정
       [{ text: "Follow X", url: "https://x.com/Fnfs_Official" }],
-      [{ text: "Join Official Telegram", url: "https://t.me/fnfs_official" }],
+      // [{ text: "Join Official Telegram", url: "https://t.me/fnfs_official" }],
     ],
   };
 
